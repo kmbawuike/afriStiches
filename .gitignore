@@ -1,0 +1,5 @@
+# Created by .ignore support plugin (hsz.mobi)
+server/.env
+server/node_modules/
+server/package-lock.json
+.idea/
