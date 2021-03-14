@@ -1,7 +1,12 @@
+// Package Imports
 const express = require("express");
 require("dotenv").config();
 const mongoose = require("mongoose");
 
+// Routes
+const UserRoutes = require('./routes/user')
+
+// Database setup
 mongoose
   .connect(process.env.DATABASE, {
     useNewUrlParser: true,
@@ -12,10 +17,9 @@ mongoose
 // Defined App
 const app = express();
 
-// Routes
-app.get("/", (req, res) => {
-  res.send("Running node for thr first time");
-});
+
+// Router Middleware
+app.use('/api', UserRoutes)
 
 // Port
 const port = process.env.PORT || 8080;
