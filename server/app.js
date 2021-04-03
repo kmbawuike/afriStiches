@@ -7,7 +7,10 @@ const cookieParser = require("cookie-parser");
 const expressValidator = require("express-validator");
 
 // Routes
+const AuthRoutes = require("./routes/auth");
 const UserRoutes = require("./routes/user");
+const CategoryRoutes = require("./routes/category");
+const ProductRoutes = require("./routes/product")
 
 // Database setup
 mongoose
@@ -28,7 +31,10 @@ app.use(cookieParser());
 app.use(expressValidator());
 
 // Router Middleware
+app.use("/api", AuthRoutes);
 app.use("/api", UserRoutes);
+app.use("/api", CategoryRoutes);
+app.use("/api", ProductRoutes)
 
 // Port
 const port = process.env.PORT || 8080;
