@@ -22,10 +22,11 @@ const productSchema = mongoose.Schema(
     },
     quantity: {
         type: Number,
-        trim: true,
-        maxlength: 32,
-        required: true
     },
+    sold: {
+      type: Number,
+     default: 0
+  },
     category: {
         type: ObjectId,
         ref: "Category",

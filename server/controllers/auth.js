@@ -19,6 +19,7 @@ exports.signUp = (req, res) => {
   });
 };
 
+
 exports.signIn = (req, res) => {
   // find user based on email
   const { email, password } = req.body;
@@ -73,7 +74,7 @@ exports.isAuth = (req, res, next) => {
 };
 
 exports.isAdmin = (req, res, next) => {
-  if (req.profile.role !== 2) {
+  if (req.profile.role !== 1) {
     return res.status(401).json({
       error: "Access Denied! Not Admin",
     });
@@ -81,11 +82,3 @@ exports.isAdmin = (req, res, next) => {
   next();
 };
 
-exports.isVendor = (req, res, next) => {
-  if (req.profile.role !== 1 || req.profile.role !== 2) {
-    return res.status(401).json({
-      error: "Access Denied! Not Vendor",
-    });
-  }
-  next();
-};
